@@ -1,6 +1,6 @@
 # 0001. Two Sum
 
-- **Difficulty:** EASY 
+- **Difficulty:** _Easy_
 - **Link:** [View on LeetCode](https://leetcode.com/problems/two-sum/)
 
 ---
