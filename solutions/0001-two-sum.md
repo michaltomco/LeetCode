@@ -28,11 +28,11 @@ Output: [0,1]
 
 ###  Constraints
   
-( 2 \leq \text{nums.length} \leq 10^4 )
+$( 2 \leq \text{nums.length} \leq 10^4 )$
   
-( -10^9 \leq \text{nums}[i] \leq 10^9 )
+$( -10^9 \leq \text{nums}[i] \leq 10^9 )$
   
-( -10^9 \leq \text{target} \leq 10^9 )
+$( -10^9 \leq \text{target} \leq 10^9 )$
   
 Only one valid answer exists.
  
@@ -47,20 +47,21 @@ I chose to use a Dictionary because of the need to include the indices in the re
 Having the numbers saved as keys in the hash table meant there can be no duplicates stored there, but since there's always a check for result before adding a duplicate key into the dict, it is covered.
 ```python
 def two_sum(nums: List[int], target: int) -> list[int | Any] | None:
-    num_to_index = {}
+    num_to_index: dict[int, int] = {}
+    
     for index, num in enumerate(nums):
-        complement = target - num
-        if complement in num_to_index:
+        if (complement := target - num) in num_to_index:
             return [num_to_index[complement], index]
         num_to_index[num] = index
+        
+    raise ValueError("No two sum solution found.")
 ```
 
 ---
 
 ## 📈 Complexity
 
-- **Time Complexity:** O(n)
-
-- **Space Complexity:** O(n)
+- **Time Complexity:** $O(n)$
+- **Space Complexity:** $O(n)$
 
 ---

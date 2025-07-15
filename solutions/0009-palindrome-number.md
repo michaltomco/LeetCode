@@ -25,7 +25,7 @@ Output: false
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
  
 ### Constraints:
--231 <= x <= 231 - 1
+$-231 <= x <= 231 - 1$
  
 
 Follow up: Could you solve it without converting the integer to a string?
@@ -33,31 +33,40 @@ Follow up: Could you solve it without converting the integer to a string?
 ---
 
 ## 💡 Approach
+### Reverse half
 ```python
-def isPalindromeReverseHalf(x: int) -> bool:
-    if x < 0 or (x % 10 == 0 and x != 0):
-        return False
+def is_palindrome_reverse_half(x: int) -> bool:
+    if x < 0 or (x % 10 == 0 and x != 0): return False
 
-    reversed_half = 0
+    reversed_half: int = 0
+
     while x > reversed_half:
         reversed_half = reversed_half * 10 + x % 10
         x //= 10
 
     return x == reversed_half or x == reversed_half // 10
+```
 
-def isPalindromeStringPointers(x: int) -> bool:
-    if x < 0:
-        return False
-    str_x = str(x)
-    left, right = 0,len(str_x )-1
+### String pointers
+```python
+def is_palindrome_string_pointers(x: int) -> bool:
+    if x < 0: return False
+
+    str_x: str = str(x)
+    left: int = 0
+    right: int = len(str_x) - 1
+
     while left < right:
-        if str_x [left] != str_x [right]:
-            return False
+        if str_x[left] != str_x[right]: return False
         left += 1
         right -= 1
-    return True
 
-def isPalindromeStringOneLine(x: int) -> bool:
+    return True
+```
+
+### One line
+```python
+def is_palindrome_string_one_line(x: int) -> bool:
     return str(x) == str(x)[::-1]
 ```
 
@@ -65,16 +74,16 @@ def isPalindromeStringOneLine(x: int) -> bool:
 
 ## 📈 Complexity
 
-### isPalindromeReverseHalf
-- **Time Complexity:** O(_log₁₀ n_)
-- **Space Complexity:** O(_1_)
+### Reverse half
+- **Time Complexity:** $O(\log_{10} n)$
+- **Space Complexity:** $O(1)$
 
-### isPalindromeStringPointers
-- **Time Complexity:** O(_n_)
-- **Space Complexity:** O(_n_)
+### String pointers
+- **Time Complexity:** $O(n)$
+- **Space Complexity:** $O(n)$
 
-### isPalindromeStringOneLine
-- **Time Complexity:** O(_n_)
-- **Space Complexity:** O(_n_)
+### One line
+- **Time Complexity:** $O(n)$
+- **Space Complexity:** $O(n)$
 
 ---

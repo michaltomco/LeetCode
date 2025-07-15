@@ -34,33 +34,41 @@ s consists of English letters, digits, symbols and spaces.
 
 Both solutions use set for O(1) lookup times of already viewed characters, the string solution updates a string window, while the second solution uses a sliding window moved by int indices.
 
+### String solution
 ```python
 def length_of_longest_substring_string_solution(input_string: str) -> int:
-    current_set = set()
-    current_string = ""
-    longest_length = 0
-    for c in input_string:
-        if c in current_set:
+    current_set: set[str] = set()
+    current_string: str = ""
+    longest_length: int = 0
+    
+    for char in input_string:
+        if char in current_set:
             longest_length = max(longest_length, len(current_set))
-            old_and_new_str = current_string.split(c)
+            old_and_new_str = current_string.split(char)
             current_string = old_and_new_str[1]
-            for c_del in old_and_new_str[0] + c:
-                current_set.remove(c_del)
-        current_set.add(c)
-        current_string = current_string + c
+            for char_to_del in old_and_new_str[0] + char:
+                current_set.remove(char_to_del)
+        current_set.add(char)
+        current_string = current_string + char
     longest_length = max(longest_length, len(current_set))
+    
     return longest_length
+```
 
+### Sliding windows solution
+```python
 def length_of_longest_substring_sliding_windows_solution(input_string: str) -> int:
-    seen = set()
-    left = 0
-    max_len = 0
+    seen: set[str] = set()
+    left: int = 0
+    max_len: int = 0
+    
     for right in range(len(input_string)):
         while input_string[right] in seen:
             seen.remove(input_string[left])
             left += 1
         seen.add(input_string[right])
         max_len = max(max_len, right - left + 1)
+        
     return max_len
 ```
 
@@ -69,11 +77,11 @@ def length_of_longest_substring_sliding_windows_solution(input_string: str) -> i
 ## 📈 Complexity
 
 ### String solution
-- **Time Complexity:** O(n*n)
-- **Space Complexity:** O(n)
+- **Time Complexity:** $O(n^2)$
+- **Space Complexity:** $O(n)$
 
 ### Sliding windows solution
-- **Time Complexity:** O(n)
-- **Space Complexity:** O(n)
+- **Time Complexity:** $O(n)$
+- **Space Complexity:** $O(n)$
 
 ---

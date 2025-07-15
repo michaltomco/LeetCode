@@ -32,7 +32,9 @@ __Output:__ [8,9,9,9,0,0,0,1]
 ### Constraints:
 
 The number of nodes in each linked list is in the range [1, 100].
-0 <= Node.val <= 9
+
+$0 <= Node.val <= 9$
+
 It is guaranteed that the list represents a number that does not have leading zeros.
 
 ---
@@ -42,16 +44,22 @@ It is guaranteed that the list represents a number that does not have leading ze
 Result needs to be in a queue in order to be in the correct order. Created dummy node to make head init concise.
 
 ```python
-def addTwoNumbers(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-    dummy = ListNode(0)
-    result_tail = dummy
-    overflow = 0
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val: int = 0, next: Self | None = None):
+        self.val = val
+        self.next = next
+
+def add_two_numbers(l1: ListNode | None, l2: ListNode | None) -> ListNode | None:
+    dummy: ListNode = ListNode(0)
+    result_tail: ListNode = dummy
+    overflow: int = 0
 
     while l1 or l2 or overflow == 1:
-        val1 = l1.val if l1 else 0
-        val2 = l2.val if l2 else 0
+        val1: int = l1.val if l1 else 0
+        val2: int = l2.val if l2 else 0
 
-        sum_value = val1 + val2 + overflow
+        sum_value: int = val1 + val2 + overflow
         overflow = sum_value // 10
         result_tail.next = ListNode(sum_value % 10, None)
         result_tail = result_tail.next
@@ -66,8 +74,7 @@ def addTwoNumbers(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[Li
 
 ## 📈 Complexity
 
-- **Time Complexity:** O(MAX(M, N))
-
-- **Space Complexity:** O(MAX(M, N))
+- **Time Complexity:** $O(MAX(M, N))$
+- **Space Complexity:** $O(MAX(M, N))$
 
 ---
