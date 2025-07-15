@@ -28,7 +28,8 @@ def add_two_numbers(l1: ListNode | None, l2: ListNode | None) -> ListNode | None
     return dummy.next
 
 
-def head_to_list(head: ListNode) -> list[int]:
+def head_to_list(head: ListNode | None) -> list[int]:
+    if head is None: return []
     result: list[int] = []
 
     while head:
@@ -38,7 +39,7 @@ def head_to_list(head: ListNode) -> list[int]:
     return result
 
 
-def list_to_head(input_list: list[int]) -> ListNode:
+def list_to_head(input_list: list[int]) -> ListNode | None:
     dummy: ListNode = ListNode(0)
     current: ListNode = dummy
 
@@ -49,35 +50,35 @@ def list_to_head(input_list: list[int]) -> ListNode:
     return dummy.next
 
 
-def test_add_two_numbers_case1():
+def test_add_two_numbers_case1() -> None:
     output = add_two_numbers(list_to_head([3, 4, 2]), list_to_head([4, 6, 5]))
     output_list = head_to_list(output)
 
     assert output_list == [7, 0, 8]
 
 
-def test_add_two_numbers_case2():
+def test_add_two_numbers_case2() -> None:
     output = add_two_numbers(list_to_head([0]), list_to_head([0]))
     output_list = head_to_list(output)
 
     assert output_list == [0]
 
 
-def test_add_two_numbers_case3():
+def test_add_two_numbers_case3() -> None:
     output = add_two_numbers(list_to_head([9, 9, 9, 9, 9, 9, 9]), list_to_head([9, 9, 9, 9]))
     output_list = head_to_list(output)
 
     assert output_list == [8, 9, 9, 9, 0, 0, 0, 1]
 
 
-def test_add_two_numbers_case4():
+def test_add_two_numbers_case4() -> None:
     output = add_two_numbers(None, list_to_head([0]))
     output_list = head_to_list(output)
 
     assert output_list == [0]
 
 
-def test_add_two_numbers_case5():
+def test_add_two_numbers_case5() -> None:
     output = add_two_numbers(list_to_head([0]), None)
     output_list = head_to_list(output)
 

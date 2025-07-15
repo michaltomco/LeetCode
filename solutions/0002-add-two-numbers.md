@@ -32,7 +32,9 @@ __Output:__ [8,9,9,9,0,0,0,1]
 ### Constraints:
 
 The number of nodes in each linked list is in the range [1, 100].
-0 <= Node.val <= 9
+
+$0 <= Node.val <= 9$
+
 It is guaranteed that the list represents a number that does not have leading zeros.
 
 ---
@@ -42,6 +44,12 @@ It is guaranteed that the list represents a number that does not have leading ze
 Result needs to be in a queue in order to be in the correct order. Created dummy node to make head init concise.
 
 ```python
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val: int = 0, next: Self | None = None):
+        self.val = val
+        self.next = next
+
 def add_two_numbers(l1: ListNode | None, l2: ListNode | None) -> ListNode | None:
     dummy: ListNode = ListNode(0)
     result_tail: ListNode = dummy
@@ -66,8 +74,7 @@ def add_two_numbers(l1: ListNode | None, l2: ListNode | None) -> ListNode | None
 
 ## 📈 Complexity
 
-- **Time Complexity:** O(MAX(M, N))
-
-- **Space Complexity:** O(MAX(M, N))
+- **Time Complexity:** $O(MAX(M, N))$
+- **Space Complexity:** $O(MAX(M, N))$
 
 ---
