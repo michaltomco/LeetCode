@@ -28,11 +28,11 @@ Output: [0,1]
 
 ###  Constraints
   
-( 2 \leq \text{nums.length} \leq 10^4 )
+$( 2 \leq \text{nums.length} \leq 10^4 )$
   
-( -10^9 \leq \text{nums}[i] \leq 10^9 )
+$( -10^9 \leq \text{nums}[i] \leq 10^9 )$
   
-( -10^9 \leq \text{target} \leq 10^9 )
+$( -10^9 \leq \text{target} \leq 10^9 )$
   
 Only one valid answer exists.
  
@@ -48,10 +48,12 @@ Having the numbers saved as keys in the hash table meant there can be no duplica
 ```python
 def two_sum(nums: List[int], target: int) -> list[int | Any] | None:
     num_to_index: dict[int, int] = {}
+    
     for index, num in enumerate(nums):
         if (complement := target - num) in num_to_index:
             return [num_to_index[complement], index]
         num_to_index[num] = index
+        
     raise ValueError("No two sum solution found.")
 ```
 
@@ -59,8 +61,7 @@ def two_sum(nums: List[int], target: int) -> list[int | Any] | None:
 
 ## 📈 Complexity
 
-- **Time Complexity:** O(n)
-
-- **Space Complexity:** O(n)
+- **Time Complexity:** $O(n)$
+- **Space Complexity:** $O(n)$
 
 ---
