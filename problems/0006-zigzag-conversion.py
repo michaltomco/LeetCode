@@ -1,3 +1,6 @@
+import string
+
+
 def convert(s: str, numRows: int) -> str:
     if numRows == 1 or numRows >= len(s): return s
 
@@ -27,20 +30,20 @@ def test_convert_case_one_char_one_row() -> None:
 
 
 def test_convert_case_9_numbers_3_rows() -> None:
-    assert convert("0123456789", 3) == "0481357926"
+    assert convert(string.digits, 3) == "0481357926"
 
 
 def test_convert_case_9_numbers_4_rows() -> None:
-    assert convert("0123456789", 4) == "0615724839"
+    assert convert(string.digits, 4) == "0615724839"
 
 
 def test_convert_case_10_numbers_4_rows() -> None:
-    assert convert("0123456789A", 4) == "06157248A39"
+    assert convert(string.digits + "A", 4) == "06157248A39"
 
 
 def test_convert_case_numbers_letters_3_rows() -> None:
-    assert convert("0123456789ABCDEFGHIJKLMNOPQ", 3) == "048CGKO13579BDFHJLNP26AEIMQ"
+    assert convert(string.hexdigits, 3) == "048cAE13579bdfBDF26aeC"
 
 
 def test_convert_case_numbers_letters_4_rows() -> None:
-    assert convert("0123456789ABCDEFGHIJKLMNOPQR", 4) == "06CIO157BDHJNP248AEGKMQ39FLR"
+    assert convert(string.hexdigits, 4) == "06cC157bdBD248aeAE39fF"
