@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e8a8836-95a4-453a-8ab9-80d2568a9087" name="Changes" comment="rework 0006 tests with string consts">
-      <change afterPath="$PROJECT_DIR$/website/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/website/.idea/website.iml" afterDir="false" />
+    <list default="true" id="1e8a8836-95a4-453a-8ab9-80d2568a9087" name="Changes" comment="solve 0020">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uv.lock" beforeDir="false" afterPath="$PROJECT_DIR$/uv.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/0020-valid-parentheses.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/0020-valid-parentheses.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="rework-zig-zag-tests" />
+        <entry key="$PROJECT_DIR$" value="0020" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -76,13 +69,14 @@
     "Python tests.Python tests in 0008-string-to-integer-atoi.py.executor": "Debug",
     "Python tests.Python tests in 0009-palindrome-number.py.executor": "Run",
     "Python tests.Python tests in 0020-valid-parentheses.py.executor": "Debug",
+    "Python tests.Python tests in 0155-min-stack.py.executor": "Run",
     "Python.0001-two-sum.executor": "Run",
     "Python.generate-markdown.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "0020",
+    "git-widget-placeholder": "0155",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "last_opened_file_path": "C:/Users/Miťo/PycharmProjects/LeetCode",
@@ -147,7 +141,7 @@
       <workItem from="1752578125951" duration="30804000" />
       <workItem from="1752759904837" duration="2293000" />
       <workItem from="1752847242686" duration="2245000" />
-      <workItem from="1753018623111" duration="4776000" />
+      <workItem from="1753018623111" duration="9248000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <option name="closed" value="true" />
@@ -317,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1752847515225</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="solve 0020">
+      <option name="closed" value="true" />
+      <created>1753023577915</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1753023577915</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -345,7 +347,8 @@
     <MESSAGE value="solve 0007" />
     <MESSAGE value="solve 0008" />
     <MESSAGE value="rework 0006 tests with string consts" />
-    <option name="LAST_COMMIT_MESSAGE" value="rework 0006 tests with string consts" />
+    <MESSAGE value="solve 0020" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve 0020" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -365,12 +368,17 @@
           <line>34</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/problems/0155-min-stack.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LeetCode$0001_two_sum.coverage" NAME="0001-two-sum Coverage Results" MODIFIED="1752081421332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/problems" />
-    <SUITE FILE_PATH="coverage/LeetCode$.coverage" NAME=" Coverage Results" MODIFIED="1753020396021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/problems" />
-    <SUITE FILE_PATH="coverage/LeetCode$generate_markdown.coverage" NAME="generate-markdown Coverage Results" MODIFIED="1753023254788" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/LeetCode$.coverage" NAME=" Coverage Results" MODIFIED="1753027859423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/problems" />
+    <SUITE FILE_PATH="coverage/LeetCode$generate_markdown.coverage" NAME="generate-markdown Coverage Results" MODIFIED="1753028266753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

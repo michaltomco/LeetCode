@@ -32,7 +32,8 @@ class Stack(Generic[T]):
         if self.is_empty():
             raise IndexError("Stack is empty")
         assert self.head is not None
-        return self.head.value
+        result: T = self.head.value
+        return result
 
 def is_valid(s: str) -> bool:
     stack: Stack[str] = Stack()
