@@ -43,12 +43,21 @@ class StackNode:
     def __init__(self, value: int, next_node: "StackNode | None" = None) -> None:
         self.value: int = value
         self.next: StackNode | None = next_node
+        
+    def __repr__(self) -> str:
+        return str(self.value) + " -> " + str(self.next)
 
 
 class MinStack:
     def __init__(self) -> None:
         self.head: StackNode | None = None
         self._min: int = sys.maxsize
+
+    def __repr__(self) -> str:
+        if self.head is None:
+            return "Empty MinStack"
+        else:
+            return f"{self.head} (min: {self._min})"
 
     def push(self, value: int) -> None:
         self.head = StackNode(value, self.head)
