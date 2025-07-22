@@ -54,8 +54,12 @@ class MinStack:
             current = current.next
 
 
-def test_remove_min() -> None:
-    stack = MinStack()
+@pytest.fixture
+def stack():
+    return MinStack()
+
+
+def test_remove_min(stack) -> None:
     stack.push(-2)
     stack.push(0)
     stack.push(-3)
@@ -65,13 +69,11 @@ def test_remove_min() -> None:
     assert stack.get_min() == -2
 
 
-def test_get_min_empty() -> None:
-    stack = MinStack()
+def test_get_min_empty(stack) -> None:
     assert stack.get_min() == sys.maxsize
 
 
-def test_case_2() -> None:
-    stack = MinStack()
+def test_case_2(stack) -> None:
     stack.push(2147483646)
     stack.push(2147483646)
     stack.push(2147483647)

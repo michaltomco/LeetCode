@@ -3,7 +3,7 @@ from typing import List, Any
 import pytest
 
 
-def two_sum(nums: List[int], target: int) -> list[int | Any] | None:
+def two_sum(nums: List[int], target: int) -> list[int] | None:
     num_to_index: dict[int, int] = {}
 
     for index, num in enumerate(nums):
@@ -13,17 +13,16 @@ def two_sum(nums: List[int], target: int) -> list[int | Any] | None:
 
     raise ValueError("No two sum solution found.")
 
-def test_two_sum_case1() -> None:
-    assert two_sum([2, 7, 11, 15], 9) == [0, 1]
 
-
-def test_two_sum_case2() -> None:
-    assert two_sum([3, 2, 4], 6) == [1, 2]
-
-
-def test_two_sum_case3() -> None:
-    assert two_sum([3, 3], 6) == [0, 1]
-
-def test_two_sum_no_solution() -> None:
-    with pytest.raises(ValueError):
-        two_sum([1, 2, 3], 10)
+@pytest.mark.parametrize("nums, target, expected_exception, expected_result", [
+    ([2, 7, 11, 15], 9, None, [0, 1]),
+    ([3, 2, 4], 6, None, [1, 2]),
+    ([3, 3], 6, None, [0, 1]),
+    ([1, 2, 3], 10, ValueError, None),  # This case expects an exception
+])
+def test_two_sum(nums: list[int], target: int, expected_exception, expected_result) -> None:
+    if expected_exception:
+        with pytest.raises(expected_exception):
+            two_sum(nums, target)
+    else:
+        assert two_sum(nums, target) == expected_result

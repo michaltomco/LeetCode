@@ -1,3 +1,6 @@
+import pytest
+
+
 def is_palindrome_reverse_half(x: int) -> bool:
     if x < 0 or (x % 10 == 0 and x != 0): return False
 
@@ -29,85 +32,19 @@ def is_palindrome_string_one_line(x: int) -> bool:
     return str(x) == str(x)[::-1]
 
 
-def test_is_palindrome_reverse_half_case_negative() -> None:
-    assert is_palindrome_reverse_half(-121) == False
-
-
-def test_is_palindrome_reverse_half_case1() -> None:
-    assert is_palindrome_reverse_half(121) == True
-
-
-def test_is_palindrome_reverse_half_case2() -> None:
-    assert is_palindrome_reverse_half(7) == True
-
-
-def test_is_palindrome_reverse_half_case3() -> None:
-    assert is_palindrome_reverse_half(10) == False
-
-
-def test_is_palindrome_reverse_half_case4() -> None:
-    assert is_palindrome_reverse_half(1000021) == False
-
-
-def test_is_palindrome_reverse_half_case5() -> None:
-    assert is_palindrome_reverse_half(1001) == True
-
-
-def test_is_palindrome_reverse_half_case6() -> None:
-    assert is_palindrome_reverse_half(0) == True
-
-
-def test_is_palindrome_string_pointers_case_negative() -> None:
-    assert is_palindrome_string_pointers(-121) == False
-
-
-def test_is_palindrome_string_pointers_case1() -> None:
-    assert is_palindrome_string_pointers(121) == True
-
-
-def test_is_palindrome_string_pointers_case2() -> None:
-    assert is_palindrome_string_pointers(7) == True
-
-
-def test_is_palindrome_string_pointers_case3() -> None:
-    assert is_palindrome_string_pointers(10) == False
-
-
-def test_is_palindrome_string_pointers_case4() -> None:
-    assert is_palindrome_string_pointers(1000021) == False
-
-
-def test_is_palindrome_string_pointers_case5() -> None:
-    assert is_palindrome_string_pointers(1001) == True
-
-
-def test_is_palindrome_string_pointers_case6() -> None:
-    assert is_palindrome_string_pointers(0) == True
-
-
-def test_is_palindrome_string_one_line_case_negative() -> None:
-    assert is_palindrome_string_one_line(-121) == False
-
-
-def test_is_palindrome_string_one_line_case1() -> None:
-    assert is_palindrome_string_one_line(121) == True
-
-
-def test_is_palindrome_string_one_line_case2() -> None:
-    assert is_palindrome_string_one_line(7) == True
-
-
-def test_is_palindrome_string_one_line_case3() -> None:
-    assert is_palindrome_string_one_line(10) == False
-
-
-def test_is_palindrome_string_one_line_case4() -> None:
-    assert is_palindrome_string_one_line(1000021) == False
-
-
-def test_is_palindrome_string_one_line_case5() -> None:
-    assert is_palindrome_string_one_line(1001) == True
-
-
-def test_is_palindrome_string_one_line_case6() -> None:
-    assert is_palindrome_string_one_line(0) == True
+@pytest.mark.parametrize("func", [
+    is_palindrome_reverse_half,
+    is_palindrome_string_pointers,
+    is_palindrome_string_one_line,
+])
+@pytest.mark.parametrize("input_val, expected", [
+    (-121, False),
+    (121, True),
+    (7, True),
+    (10, False),
+    (1000021, False),
+    (1001, True),
+    (0, True),
+])
+def test_is_palindrome(func, input_val, expected):
+    assert func(input_val) == expected

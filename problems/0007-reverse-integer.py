@@ -1,3 +1,6 @@
+import pytest
+
+
 def reverse_string(x: int) -> int:
     sig: int = -1 if x < 0 else 1
     str_number = str(abs(x))
@@ -27,33 +30,15 @@ def reverse_int(x: int) -> int:
         return result
 
 
-def test_int_case_positive() -> None:
-    assert reverse_int(123) == 321
-
-
-def test_int_case_negative() -> None:
-    assert reverse_int(-123) == -321
-
-
-def test_int_case_first_zero() -> None:
-    assert reverse_int(120) == 21
-
-
-def test_int_case_out_of_bounds() -> None:
-    assert reverse_int(1534236469) == 0
-
-
-def test_str_case_positive() -> None:
-    assert reverse_string(123) == 321
-
-
-def test_str_case_negative() -> None:
-    assert reverse_string(-123) == -321
-
-
-def test_str_case_first_zero() -> None:
-    assert reverse_string(120) == 21
-
-
-def test_str_case_out_of_bounds() -> None:
-    assert reverse_string(1534236469) == 0
+@pytest.mark.parametrize("func, input_val, expected", [
+    (reverse_int, 123, 321),
+    (reverse_int, -123, -321),
+    (reverse_int, 120, 21),
+    (reverse_int, 1534236469, 0),
+    (reverse_string, 123, 321),
+    (reverse_string, -123, -321),
+    (reverse_string, 120, 21),
+    (reverse_string, 1534236469, 0),
+])
+def test_reverse_functions(func, input_val, expected):
+    assert func(input_val) == expected

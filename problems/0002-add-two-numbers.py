@@ -1,7 +1,8 @@
 from typing import Self
 
+import pytest
 
-# Definition for singly-linked list.
+
 class ListNode:
     def __init__(self, val: int = 0, next: Self | None = None):
         self.val = val
@@ -9,6 +10,7 @@ class ListNode:
 
 
 def add_two_numbers(l1: ListNode | None, l2: ListNode | None) -> ListNode | None:
+    if l1 is None or l2 is None: return ListNode(0)
     dummy: ListNode = ListNode(0)
     result_tail: ListNode = dummy
     overflow: int = 0
@@ -40,6 +42,7 @@ def head_to_list(head: ListNode | None) -> list[int]:
 
 
 def list_to_head(input_list: list[int]) -> ListNode | None:
+    if input_list is None: return None
     dummy: ListNode = ListNode(0)
     current: ListNode = dummy
 
@@ -49,37 +52,16 @@ def list_to_head(input_list: list[int]) -> ListNode | None:
 
     return dummy.next
 
-
-def test_add_two_numbers_case1() -> None:
-    output = add_two_numbers(list_to_head([3, 4, 2]), list_to_head([4, 6, 5]))
+@pytest.mark.parametrize("nums1, nums2, expected", [
+    ([3, 4, 2], [4, 6, 5], [7, 0, 8]),
+    ([0], [0], [0]),
+    ([9, 9, 9, 9, 9, 9, 9], [9, 9, 9, 9], [8, 9, 9, 9, 0, 0, 0, 1]),
+    (None, [1], [0]),
+    ([1], None, [0]),
+    (None, None, [0]),
+])
+def test_add_two_numbers_case1(nums1: list[int] | None, nums2: list[int] | None, expected: list[int]) -> None:
+    output = add_two_numbers(list_to_head(nums1), list_to_head(nums2))
     output_list = head_to_list(output)
 
-    assert output_list == [7, 0, 8]
-
-
-def test_add_two_numbers_case2() -> None:
-    output = add_two_numbers(list_to_head([0]), list_to_head([0]))
-    output_list = head_to_list(output)
-
-    assert output_list == [0]
-
-
-def test_add_two_numbers_case3() -> None:
-    output = add_two_numbers(list_to_head([9, 9, 9, 9, 9, 9, 9]), list_to_head([9, 9, 9, 9]))
-    output_list = head_to_list(output)
-
-    assert output_list == [8, 9, 9, 9, 0, 0, 0, 1]
-
-
-def test_add_two_numbers_case4() -> None:
-    output = add_two_numbers(None, list_to_head([0]))
-    output_list = head_to_list(output)
-
-    assert output_list == [0]
-
-
-def test_add_two_numbers_case5() -> None:
-    output = add_two_numbers(list_to_head([0]), None)
-    output_list = head_to_list(output)
-
-    assert output_list == [0]
+    assert output_list == expected
