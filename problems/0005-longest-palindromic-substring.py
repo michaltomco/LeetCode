@@ -1,4 +1,4 @@
-from typing import Tuple
+from typing import Tuple, Callable
 
 import pytest
 
@@ -53,5 +53,5 @@ def longest_palindrome_expand_from_center(input: str) -> str:
     ("aaaaa", "aaaaa"),
     ("", "")
 ])
-def test_longest_palindrome(func, input_str: str, expected: str) -> None:
+def test_longest_palindrome(func: Callable[[str], str], input_str: str, expected: str) -> None:
     assert func(input_str) == expected
