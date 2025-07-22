@@ -1,3 +1,5 @@
+from typing import Callable
+
 import pytest
 
 
@@ -46,5 +48,5 @@ def is_palindrome_string_one_line(x: int) -> bool:
     (1001, True),
     (0, True),
 ])
-def test_is_palindrome(func, input_val, expected):
+def test_is_palindrome(func: Callable[[str], int], input_val, expected):
     assert func(input_val) == expected

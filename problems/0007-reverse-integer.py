@@ -29,16 +29,16 @@ def reverse_int(x: int) -> int:
     else:
         return result
 
-
-@pytest.mark.parametrize("func, input_val, expected", [
-    (reverse_int, 123, 321),
-    (reverse_int, -123, -321),
-    (reverse_int, 120, 21),
-    (reverse_int, 1534236469, 0),
-    (reverse_string, 123, 321),
-    (reverse_string, -123, -321),
-    (reverse_string, 120, 21),
-    (reverse_string, 1534236469, 0),
+@pytest.mark.parametrize("func", [reverse_int, reverse_string])
+@pytest.mark.parametrize("input_val, expected", [
+    (123, 321),
+    (-123, -321),
+    (120, 21),
+    (1534236469, 0),
+    (123, 321),
+    (-123, -321),
+    (120, 21),
+    (1534236469, 0),
 ])
 def test_reverse_functions(func, input_val, expected):
     assert func(input_val) == expected

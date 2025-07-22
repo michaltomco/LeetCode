@@ -1,3 +1,5 @@
+from typing import Callable
+
 import pytest
 
 
@@ -47,5 +49,5 @@ def length_of_longest_substring_sliding_windows_solution(input_string: str) -> i
     ("jbpnbwwd", 4),
     ("", 0),
 ])
-def test_length_of_longest_substring(func, input_str: str, expected: int) -> None:
+def test_length_of_longest_substring(func: Callable[[str], int], input_str: str, expected: int) -> None:
     assert func(input_str) == expected
