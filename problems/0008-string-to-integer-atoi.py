@@ -1,4 +1,7 @@
-def myAtoi(s: str) -> int:
+import pytest
+
+
+def my_atoi(s: str) -> int:
     for index, char in enumerate(s):
         match char:
             case " ":
@@ -26,33 +29,15 @@ def extract_number(s: str) -> int:
     return result
 
 
-def test_number() -> None:
-    assert myAtoi("42") == 42
-
-
-def test_spaces_negative_number_with_zero() -> None:
-    assert myAtoi("   -042") == -42
-
-
-def test_starting_number_ending_letters() -> None:
-    assert myAtoi("1337c0d3") == 1337
-
-
-def test_number_minus_number() -> None:
-    assert myAtoi("0-1") == 0
-
-
-def test_letters_ending_number() -> None:
-    assert myAtoi("words and 987") == 0
-
-
-def test_only_lower_bound() -> None:
-    assert myAtoi("-91283472332") == -2147483648
-
-
-def test_only_plus() -> None:
-    assert myAtoi("+") == 0
-
-
-def test_empty() -> None:
-    assert myAtoi("") == 0
+@pytest.mark.parametrize("input_str, expected", [
+    ("42", 42),
+    ("   -042", -42),
+    ("1337c0d3", 1337),
+    ("0-1", 0),
+    ("words and 987", 0),
+    ("-91283472332", -2147483648),
+    ("+", 0),
+    ("", 0),
+])
+def test_my_atoi(input_str: str, expected: int) -> None:
+    assert my_atoi(input_str) == expected

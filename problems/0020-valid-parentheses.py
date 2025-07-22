@@ -1,6 +1,9 @@
 from typing import Generic, TypeVar
 
+import pytest
+
 T = TypeVar('T')
+
 
 class StackNode(Generic[T]):
     def __init__(self, value: T) -> None:
@@ -35,9 +38,10 @@ class Stack(Generic[T]):
         result: T = self.head.value
         return result
 
+
 def is_valid(s: str) -> bool:
     stack: Stack[str] = Stack()
-    open_parentheses: dict[str, str] = {"(":")", "[":"]", "{":"}"}
+    open_parentheses: dict[str, str] = {"(": ")", "[": "]", "{": "}"}
 
     for ch in s:
         if ch in open_parentheses:
@@ -48,29 +52,14 @@ def is_valid(s: str) -> bool:
     return stack.is_empty()
 
 
-def test_1() -> None:
-    assert is_valid("()") == True
-
-
-def test_all_separate() -> None:
-    assert is_valid("()[]{}") == True
-
-
-def test_different_end() -> None:
-    assert is_valid("(]") == False
-
-
-def test_2_nested_different() -> None:
-    assert is_valid("([])") == True
-
-
-def test_2_nested_same() -> None:
-    assert is_valid("[[]]") == True
-
-
-def test_3_nested_same() -> None:
-    assert is_valid("((()))") == True
-
-
-def test_2_nested_different_end() -> None:
-    assert is_valid("([)]") == False
+@pytest.mark.parametrize("input_str, expected", [
+    ("()", True),
+    ("()[]{}", True),
+    ("(]", False),
+    ("([])", True),
+    ("[[]]", True),
+    ("((()))", True),
+    ("([)]", False),
+])
+def test_is_valid(input_str: str, expected: bool) -> None:
+    assert is_valid(input_str) == expected

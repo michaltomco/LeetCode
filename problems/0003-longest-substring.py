@@ -1,3 +1,6 @@
+import pytest
+
+
 def length_of_longest_substring_string_solution(input_string: str) -> int:
     current_set: set[str] = set()
     current_string: str = ""
@@ -16,6 +19,7 @@ def length_of_longest_substring_string_solution(input_string: str) -> int:
 
     return longest_length
 
+
 def length_of_longest_substring_sliding_windows_solution(input_string: str) -> int:
     seen: set[str] = set()
     left: int = 0
@@ -31,32 +35,17 @@ def length_of_longest_substring_sliding_windows_solution(input_string: str) -> i
     return max_len
 
 
-def test_length_of_longest_substring_string_solution_case1() -> None:
-    assert length_of_longest_substring_string_solution("abcabccbb") == 3
-
-def test_length_of_longest_substring_string_solution_case2() -> None:
-    assert length_of_longest_substring_string_solution("bbbbb") == 1
-
-def test_length_of_longest_substring_string_solution_case3() -> None:
-    assert length_of_longest_substring_string_solution("pwwkew") == 3
-
-def test_length_of_longest_substring_string_solution_case4() -> None:
-    assert length_of_longest_substring_string_solution(" ") == 1
-
-def test_length_of_longest_substring_string_solution_case5() -> None:
-    assert length_of_longest_substring_string_solution("jbpnbwwd") == 4
-
-def test_length_of_longest_substring_sliding_windows_solution_case1() -> None:
-    assert length_of_longest_substring_sliding_windows_solution("abcabccbb") == 3
-
-def test_length_of_longest_substring_sliding_windows_solution_case2() -> None:
-    assert length_of_longest_substring_sliding_windows_solution("bbbbb") == 1
-
-def test_length_of_longest_substring_sliding_windows_solution_case3() -> None:
-    assert length_of_longest_substring_sliding_windows_solution("pwwkew") == 3
-
-def test_length_of_longest_substring_sliding_windows_solution_case4() -> None:
-    assert length_of_longest_substring_sliding_windows_solution(" ") == 1
-
-def test_length_of_longest_substring_sliding_windows_solution_case5() -> None:
-    assert length_of_longest_substring_sliding_windows_solution("jbpnbwwd") == 4
+@pytest.mark.parametrize("func", [
+    length_of_longest_substring_string_solution,
+    length_of_longest_substring_sliding_windows_solution,
+])
+@pytest.mark.parametrize("input_str, expected", [
+    ("abcabccbb", 3),
+    ("bbbbb", 1),
+    ("pwwkew", 3),
+    (" ", 1),
+    ("jbpnbwwd", 4),
+    ("", 0),
+])
+def test_length_of_longest_substring(func, input_str: str, expected: int) -> None:
+    assert func(input_str) == expected
